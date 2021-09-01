@@ -15,7 +15,7 @@ class BasketballDetection(CustomDataset):
             ann = json.load(f)
         images = ann.get("images")
         anns = ann.get("annotations")
-        annotations = []
+        data_infos = []
         for image in images:
             filename = image.get("file_name")
             width = image.get("width")
@@ -28,9 +28,9 @@ class BasketballDetection(CustomDataset):
                     bboxes.append(ann.get("bbox"))
                     # labels.append(ann.get("category_id"))
                     labels.append(0)
-            annotations.append(dict(filename=filename,
-                                    width=width,
-                                    height=height,
-                                    ann=dict(bboxes=np.array(bboxes).astype(np.float32),
-                                             labels=np.array(labels).astype(np.int64))))
-        return annotations
+            data_infos.append(dict(filename=filename,
+                                   width=width,
+                                   height=height,
+                                   ann=dict(bboxes=np.array(bboxes).astype(np.float32),
+                                            labels=np.array(labels).astype(np.int64))))
+        return data_infos
