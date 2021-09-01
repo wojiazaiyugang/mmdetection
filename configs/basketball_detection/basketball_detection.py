@@ -19,3 +19,4 @@ data = dict(train=dict(type=dataset_type,
                 type=dataset_type,
                 img_prefix=data_root,
                 ann_file=data_root + "val_21.8.16.json"))
+evaluation = dict(interval=1, metric=['mAP'])
