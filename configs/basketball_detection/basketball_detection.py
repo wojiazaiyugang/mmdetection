@@ -1,7 +1,7 @@
-_base_ = '../yolo/yolov3_d53_mstrain-608_273e_coco.py'
+_base_ = '../ssd/ssd300_coco.py'
 
 model = dict(
-    bbox_head=dict(num_classes=1)
+    bbox_head=dict(num_classes=1) 
 )
 
 dataset_type = 'BasketballDetection'
