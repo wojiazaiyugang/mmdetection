@@ -1,4 +1,4 @@
-_base_ = '../fcos/fcos_center_r50_caffe_fpn_gn-head_1x_coco.py'
+_base_ = '../yolo/yolov3_d53_mstrain-608_273e_coco.py'
 
 model = dict(
     bbox_head=dict(num_classes=1)

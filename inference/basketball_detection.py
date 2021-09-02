@@ -7,8 +7,8 @@ from inference import do_inference
 from inference import get_engine, allocate_buffers, load_data, build_engine
 
 if __name__ == '__main__':
-    onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/tmp.onnx"
-    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/tmp.trt"
+    onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/basketball_detection_epoch1.onnx"
+    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/basketball_detection_epoch1.trt"
     build_engine(onnx_file, trt_file)
     # exit()
 
