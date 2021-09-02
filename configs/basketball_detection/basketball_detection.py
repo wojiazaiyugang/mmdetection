@@ -5,18 +5,18 @@ model = dict(
 )
 
 dataset_type = 'BasketballDetection'
-data_root = '/mnt/nfs-storage/yujiannan/data/bas_data/train_data/'
-# data_root = '/home/senseport0/data/train_data/'
+# data_root = '/mnt/nfs-storage/yujiannan/data/bas_data/train_data/'
+data_root = '/home/senseport0/data/train_data/'
 
 data = dict(train=dict(type=dataset_type,
                        img_prefix=data_root,
-                       ann_file=data_root + "train_21.8.16_train.json"),
+                       ann_file=data_root + "train_21.3.10_train.json" or "train_21.8.16_train.json"),
             val=dict(
                 type=dataset_type,
                 img_prefix=data_root,
-                ann_file=data_root + "val_21.8.16.json"),
+                ann_file=data_root + "train_21.3.10_val.json" or "val_21.8.16.json"),
             test=dict(
                 type=dataset_type,
                 img_prefix=data_root,
-                ann_file=data_root + "val_21.8.16.json"))
+                ann_file=data_root + "train_21.3.10_val.json" or "val_21.8.16.json"))
 evaluation = dict(interval=1, metric=['mAP'])

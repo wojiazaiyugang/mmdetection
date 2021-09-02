@@ -25,9 +25,17 @@ class BasketballDetection(CustomDataset):
             labels = []
             for ann in anns:
                 if ann.get("image_id") == image_id:
-                    bboxes.append(ann.get("bbox"))
+                    bbox = ann.get("bbox")
+                    bbox[2] = bbox[0] + bbox[2]
+                    bbox[3] = bbox[1] + bbox[3]
+                    bboxes.append(bbox)
                     # labels.append(ann.get("category_id"))
                     labels.append(0)
+            # print(dict(filename=filename,
+            #                        width=width,
+            #                        height=height,
+            #                        ann=dict(bboxes=np.array(bboxes).astype(np.float32),
+            #                                 labels=np.array(labels).astype(np.int64))))
             data_infos.append(dict(filename=filename,
                                    width=width,
                                    height=height,
