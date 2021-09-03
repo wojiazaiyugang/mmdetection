@@ -180,6 +180,21 @@ def get_engine(engine_path):
         return runtime.deserialize_cuda_engine(f.read())
 
 
+    # onnx_model = onnx.load(onnx_file)
+    # max_shape = input_config['max_shape']
+    # min_shape = input_config['min_shape']
+    # opt_shape = input_config['opt_shape']
+    # fp16_mode = False
+    # # create trt engine and wraper
+    # opt_shape_dict = {'input': [min_shape, opt_shape, max_shape]}
+    # max_workspace_size = get_GiB(workspace_size)
+    # trt_engine = onnx2trt(
+    #     onnx_model,
+    #     opt_shape_dict,
+    #     log_level=trt.Logger.VERBOSE if verbose else trt.Logger.ERROR,
+    #     fp16_mode=fp16_mode,
+    #     max_workspace_size=max_workspace_size)
+
 def build_engine(onnx_file, trt_file):
     EXPLICIT_BATCH = 1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)
     batch_size = 1
@@ -205,8 +220,8 @@ def build_engine(onnx_file, trt_file):
         with open(trt_file, 'wb') as engine_file:
             engine_file.write(engine.serialize())
         return engine
-
-
+#
+#
 def load_data(image):
     image_cv = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image_cv = cv2.resize(image_cv, (300, 300))

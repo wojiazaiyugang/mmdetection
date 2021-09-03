@@ -6,6 +6,7 @@ import cv2
 
 from inference import do_inference
 from inference import get_engine, allocate_buffers, load_data, build_engine
+from helper import onnx2tensorrt
 
 import tensorrt as trt
 from ctypes import CDLL
@@ -39,10 +40,11 @@ if __name__ == '__main__':
     # test()
     # exit()
 
-    # onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_2080ti_epoch1.onnx"
-    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_2080ti_epoch1.trt"
+    onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_openpai_epoch1.onnx"
+    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_openpai_epoch1.trt"
     # build_engine(onnx_file, trt_file)
-    # exit()
+    onnx2tensorrt(onnx_file, trt_file)
+    exit()
 
     # test_dir = r"/home/senseport0/Workspace/HiAlgorithm/mmclassification/data/goal_classification/test"
     # d = os.path.join(test_dir, "0")
