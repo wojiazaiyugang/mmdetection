@@ -206,15 +206,15 @@ def build_engine(onnx_file, trt_file):
             engine_file.write(engine.serialize())
         return engine
 
-def load_data(image):
-    image_cv = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image_cv = cv2.resize(image_cv, (224, 224))
-    miu = np.array([0.485, 0.456, 0.406])
-    std = np.array([0.229, 0.224, 0.225])
-    img_np = np.array(image_cv, dtype=float) / 255.
-    r = (img_np[:, :, 0] - miu[0]) / std[0]
-    g = (img_np[:, :, 1] - miu[1]) / std[1]
-    b = (img_np[:, :, 2] - miu[2]) / std[2]
-    img_np_t = np.array([r, g, b])
-    img_np_nchw = np.expand_dims(img_np_t, axis=0)
-    return img_np_nchw.astype(dtype=np.float32).reshape(-1)
+# def load_data(image):
+#     image_cv = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#     image_cv = cv2.resize(image_cv, (224, 224))
+#     miu = np.array([0.485, 0.456, 0.406])
+#     std = np.array([0.229, 0.224, 0.225])
+#     img_np = np.array(image_cv, dtype=float) / 255.
+#     r = (img_np[:, :, 0] - miu[0]) / std[0]
+#     g = (img_np[:, :, 1] - miu[1]) / std[1]
+#     b = (img_np[:, :, 2] - miu[2]) / std[2]
+#     img_np_t = np.array([r, g, b])
+#     img_np_nchw = np.expand_dims(img_np_t, axis=0)
+#     return img_np_nchw.astype(dtype=np.float32).reshape(-1)
