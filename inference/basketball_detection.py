@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from datetime import datetime
 
 import cv2
 
@@ -38,8 +39,8 @@ if __name__ == '__main__':
     # test()
     # exit()
 
-    # onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/fcos.onnx"
-    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/fcos.trt"
+    # onnx_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_2080ti_epoch1.onnx"
+    trt_file = r"/home/senseport0/Workspace/HiAlgorithm/mmdetection/checkpoints/ssd_2080ti_epoch1.trt"
     # build_engine(onnx_file, trt_file)
     # exit()
 
@@ -53,8 +54,11 @@ if __name__ == '__main__':
     #         if not file.endswith("jpg"):
     #             continue
     #
-        inputs[0].host = load_data(cv2.imread(os.path.join(r"/home/senseport0/Workspace/HiAlgorithm/data/test_image.jpg")))
-        output = do_inference(context=context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
+        for i in range(100):
+            s = datetime.now()
+            inputs[0].host = load_data(cv2.imread(os.path.join(r"./test_image.jpg")))
+            output = do_inference(context=context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
+            print((datetime.now() - s).total_seconds() * 1000)
         print(output)
     #         t += 1
     #         if output[0][1] < output[0][0]:
