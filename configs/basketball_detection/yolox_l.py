@@ -10,6 +10,8 @@ data_root = '/home/senseport0/data/train_data/'
 
 
 data = dict(
+    samples_per_gpu=4,
+    workers_per_gpu=1,
     train=dict(
         dataset=dict(
             type=dataset_type,
