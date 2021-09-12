@@ -1,4 +1,4 @@
-_base_ = '../yolox/yolox_l_8x8_300e_coco.py'
+_base_ = '../ssd/ssd300_coco.py'
 
 model = dict(
     bbox_head=dict(num_classes=1)

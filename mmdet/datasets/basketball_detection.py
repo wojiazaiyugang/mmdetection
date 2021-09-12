@@ -39,4 +39,4 @@ class BasketballDetection(CustomDataset):
                                        height=height,
                                        ann=dict(bboxes=np.array(bboxes).astype(np.float32),
                                                 labels=np.array(labels).astype(np.int64))))
-        return data_infos
+        return data_infos[:1000]

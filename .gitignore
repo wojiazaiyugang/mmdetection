@@ -124,4 +124,6 @@ work_dirs/
 
 /checkpoints/
 /log/
+docker/TensorRT-7.1.3.4/
+**/*.onnx
 
